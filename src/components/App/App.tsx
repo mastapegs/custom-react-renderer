@@ -1,9 +1,10 @@
 import { FC } from "react";
+import Background from "../Background";
 import data from "./data.json";
 
 const App: FC = () => {
   return (
-    <div id="background" className="bg-gray-50 p-4 min-h-screen">
+    <Background>
       <div id="paper" className="bg-white p-4 border rounded shadow-lg">
         <h1 className="text-3xl font-semibold mb-4">{data.h1}</h1>
         <p>
@@ -11,7 +12,7 @@ const App: FC = () => {
           ReactDOM.
         </p>
       </div>
-    </div>
+    </Background>
   );
 };
 
