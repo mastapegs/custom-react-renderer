@@ -188,6 +188,151 @@ const hostConfig: HostConfig<
     // eslint-disable-next-line no-console
     console.log({ id });
   },
+
+  appendChild(parentInstance: Instance, child: Instance | TextInstance): void {
+    // eslint-disable-next-line no-console
+    console.log("in appendChild");
+    // eslint-disable-next-line no-console
+    console.log({ parentInstance, child });
+  },
+
+  appendChildToContainer(
+    container: Container,
+    child: Instance | TextInstance
+  ): void {
+    // eslint-disable-next-line no-console
+    console.log("in appendChildToContainer");
+    // eslint-disable-next-line no-console
+    console.log({ container, child });
+  },
+
+  insertBefore(
+    parentInstance: Instance,
+    child: Instance | TextInstance,
+    beforeChild: Instance | TextInstance | SuspenseInstance
+  ): void {
+    // eslint-disable-next-line no-console
+    console.log("in insertBefore");
+    // eslint-disable-next-line no-console
+    console.log({ parentInstance, child, beforeChild });
+  },
+
+  insertInContainerBefore(
+    container: Container,
+    child: Instance | TextInstance,
+    beforeChild: Instance | TextInstance | SuspenseInstance
+  ): void {
+    // eslint-disable-next-line no-console
+    console.log("in insertInContainerBefore");
+    // eslint-disable-next-line no-console
+    console.log({ container, child, beforeChild });
+  },
+
+  removeChild(
+    parentInstance: Instance,
+    child: Instance | TextInstance | SuspenseInstance
+  ): void {
+    // eslint-disable-next-line no-console
+    console.log("in removeChild");
+    // eslint-disable-next-line no-console
+    console.log({ parentInstance, child });
+  },
+
+  removeChildFromContainer(
+    container: Container,
+    child: Instance | TextInstance | SuspenseInstance
+  ): void {
+    // eslint-disable-next-line no-console
+    console.log("in removeChildFromContainer");
+    // eslint-disable-next-line no-console
+    console.log({ container, child });
+  },
+
+  resetTextContent(instance: Instance): void {
+    // eslint-disable-next-line no-console
+    console.log("in resetTextContent");
+    // eslint-disable-next-line no-console
+    console.log({ instance });
+  },
+
+  commitTextUpdate(
+    textInstance: TextInstance,
+    oldText: string,
+    newText: string
+  ): void {
+    // eslint-disable-next-line no-console
+    console.log("in commitTextUpdate");
+    // eslint-disable-next-line no-console
+    console.log({ textInstance, oldText, newText });
+  },
+
+  commitMount(
+    instance: Instance,
+    type: Type,
+    props: Props,
+    internalInstanceHandle: OpaqueHandle
+  ): void {
+    // eslint-disable-next-line no-console
+    console.log("in commitMount");
+    // eslint-disable-next-line no-console
+    console.log({ instance, type, props, internalInstanceHandle });
+  },
+
+  commitUpdate(
+    instance: Instance,
+    updatePayload: UpdatePayload,
+    type: Type,
+    prevProps: Props,
+    nextProps: Props,
+    internalHandle: OpaqueHandle
+  ): void {
+    // eslint-disable-next-line no-console
+    console.log("in commitUpdate");
+    // eslint-disable-next-line no-console
+    console.log({
+      instance,
+      updatePayload,
+      type,
+      prevProps,
+      nextProps,
+      internalHandle,
+    });
+  },
+
+  hideInstance(instance: Instance): void {
+    // eslint-disable-next-line no-console
+    console.log("in hideInstance");
+    // eslint-disable-next-line no-console
+    console.log({ instance });
+  },
+
+  hideTextInstance(textInstance: TextInstance): void {
+    // eslint-disable-next-line no-console
+    console.log("in hideTextInstance");
+    // eslint-disable-next-line no-console
+    console.log({ textInstance });
+  },
+
+  unhideInstance(instance: Instance, props: Props): void {
+    // eslint-disable-next-line no-console
+    console.log("in unhideInstance");
+    // eslint-disable-next-line no-console
+    console.log({ instance, props });
+  },
+
+  unhideTextInstance(textInstance: TextInstance, text: string): void {
+    // eslint-disable-next-line no-console
+    console.log("in unhideTextInstance");
+    // eslint-disable-next-line no-console
+    console.log({ textInstance, text });
+  },
+
+  clearContainer(container: Container): void {
+    // eslint-disable-next-line no-console
+    console.log("in clearContainer");
+    // eslint-disable-next-line no-console
+    console.log({ container });
+  },
 };
 
 const reconciler = Reconciler(hostConfig);
