@@ -1,5 +1,7 @@
 import Reconciler, { HostConfig } from "react-reconciler";
 
+type OpaqueHandle = any;
+
 type Type = any;
 type Props = any;
 type Container = any;
@@ -13,8 +15,6 @@ type UpdatePayload = any;
 type _ChildSet = any;
 type TimeoutHandle = any;
 type NoTimeout = any;
-
-type OpaqueHandle = any;
 
 const hostConfig: HostConfig<
   Type,
@@ -56,6 +56,109 @@ const hostConfig: HostConfig<
     console.log("in createTextInstance");
     // eslint-disable-next-line no-console
     console.log({ text, rootContainer, hostContext, internalHandle });
+  },
+
+  appendInitialChild(
+    parentInstance: Instance,
+    child: Instance | TextInstance
+  ): void {
+    // eslint-disable-next-line no-console
+    console.log("in appendInitialChild");
+    // eslint-disable-next-line no-console
+    console.log({ parentInstance, child });
+  },
+
+  finalizeInitialChildren(
+    instance: Instance,
+    type: Type,
+    props: Props,
+    rootContainer: Container,
+    hostContext: HostContext
+  ): boolean {
+    // eslint-disable-next-line no-console
+    console.log("in finalizeInitialChildren");
+    // eslint-disable-next-line no-console
+    console.log({ instance, type, props, rootContainer, hostContext });
+    return false;
+  },
+
+  prepareUpdate(
+    instance: Instance,
+    type: Type,
+    oldProps: Props,
+    newProps: Props,
+    rootContainer: Container,
+    hostContext: HostContext
+  ): UpdatePayload | null {
+    // eslint-disable-next-line no-console
+    console.log("in prepareUpdate");
+    // eslint-disable-next-line no-console
+    console.log({
+      instance,
+      type,
+      oldProps,
+      newProps,
+      rootContainer,
+      hostContext,
+    });
+  },
+
+  shouldSetTextContent(type: Type, props: Props): boolean {
+    // eslint-disable-next-line no-console
+    console.log("in shouldSetTextContent");
+    // eslint-disable-next-line no-console
+    console.log({ type, props });
+    return false;
+  },
+
+  getRootHostContext(rootContainer: Container): HostContext | null {
+    // eslint-disable-next-line no-console
+    console.log("in getRootHostContext");
+    // eslint-disable-next-line no-console
+    console.log({ rootContainer });
+    return null;
+  },
+
+  getChildHostContext(
+    parentHostContext: HostContext,
+    type: Type,
+    rootContainer: Container
+  ): HostContext {
+    // eslint-disable-next-line no-console
+    console.log("in getChildHostContext");
+    // eslint-disable-next-line no-console
+    console.log({ parentHostContext, type, rootContainer });
+    return null;
+  },
+
+  getPublicInstance(instance: Instance | TextInstance): PublicInstance {
+    // eslint-disable-next-line no-console
+    console.log("in getPublicInstance");
+    // eslint-disable-next-line no-console
+    console.log({ instance });
+    return null;
+  },
+
+  prepareForCommit(containerInfo: Container): Record<string, any> | null {
+    // eslint-disable-next-line no-console
+    console.log("in prepareForCommit");
+    // eslint-disable-next-line no-console
+    console.log({ containerInfo });
+    return null;
+  },
+
+  resetAfterCommit(containerInfo: Container): void {
+    // eslint-disable-next-line no-console
+    console.log("in resetAfterCommit");
+    // eslint-disable-next-line no-console
+    console.log({ containerInfo });
+  },
+
+  preparePortalMount(containerInfo: Container): void {
+    // eslint-disable-next-line no-console
+    console.log("in preparePortalMount");
+    // eslint-disable-next-line no-console
+    console.log({ containerInfo });
   },
 };
 
