@@ -2,9 +2,9 @@ import { render, screen } from "@testing-library/react";
 import App from "./App";
 import data from "./data.json";
 
-test("renders learn react link", () => {
+test("renders h1 text content", () => {
   render(<App />);
   const regex = new RegExp(data.h1, "i");
-  const linkElement = screen.getByText(regex);
-  expect(linkElement).toBeInTheDocument();
+  const h1Text = screen.getByText(regex);
+  expect(h1Text).toBeInTheDocument();
 });
