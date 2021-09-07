@@ -32,6 +32,7 @@ const hostConfig: HostConfig<
   NoTimeout
 > = {
   supportsMutation: true,
+
   createInstance(
     type: Type,
     props: Props,
@@ -40,7 +41,21 @@ const hostConfig: HostConfig<
     internalHandle: OpaqueHandle
   ): Instance {
     // eslint-disable-next-line no-console
+    console.log("in createInstance");
+    // eslint-disable-next-line no-console
     console.log({ type, props, rootContainer, hostContext, internalHandle });
+  },
+
+  createTextInstance(
+    text: string,
+    rootContainer: Container,
+    hostContext: HostContext,
+    internalHandle: OpaqueHandle
+  ): TextInstance {
+    // eslint-disable-next-line no-console
+    console.log("in createTextInstance");
+    // eslint-disable-next-line no-console
+    console.log({ text, rootContainer, hostContext, internalHandle });
   },
 };
 
