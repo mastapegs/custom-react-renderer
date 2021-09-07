@@ -32,6 +32,10 @@ const hostConfig: HostConfig<
   NoTimeout
 > = {
   supportsMutation: true,
+  supportsPersistence: false,
+  noTimeout: -1,
+  isPrimaryRenderer: true,
+  supportsHydration: false,
 
   createInstance(
     type: Type,
@@ -159,6 +163,30 @@ const hostConfig: HostConfig<
     console.log("in preparePortalMount");
     // eslint-disable-next-line no-console
     console.log({ containerInfo });
+  },
+
+  now(): number {
+    // eslint-disable-next-line no-console
+    console.log("in now");
+    return 0;
+  },
+
+  scheduleTimeout(
+    // eslint-disable-next-line no-unused-vars
+    fn: (...args: unknown[]) => unknown,
+    delay?: number
+  ): TimeoutHandle {
+    // eslint-disable-next-line no-console
+    console.log("in scheduleTimeout");
+    // eslint-disable-next-line no-console
+    console.log({ fn, delay });
+  },
+
+  cancelTimeout(id: TimeoutHandle): void {
+    // eslint-disable-next-line no-console
+    console.log("in cancelTimeout");
+    // eslint-disable-next-line no-console
+    console.log({ id });
   },
 };
 
