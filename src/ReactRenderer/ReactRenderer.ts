@@ -39,6 +39,7 @@ const hostConfig: HostConfig<
     hostContext: HostContext,
     internalHandle: OpaqueHandle
   ): Instance {
+    // eslint-disable-next-line no-console
     console.log({ type, props, rootContainer, hostContext, internalHandle });
   },
 };
