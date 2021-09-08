@@ -2,11 +2,12 @@ import Reconciler, { HostConfig } from "react-reconciler";
 
 type OpaqueHandle = any;
 
-type Type = any;
-type Props = any;
-type Container = any;
-type Instance = any;
-type TextInstance = any;
+type Type = string;
+type Props = { [key: string]: any };
+type Container = Document | Element;
+type Instance = Element;
+type TextInstance = Text;
+
 type SuspenseInstance = any;
 type HydratableInstance = any;
 type PublicInstance = any;
@@ -14,7 +15,7 @@ type HostContext = any;
 type UpdatePayload = any;
 type _ChildSet = any;
 type TimeoutHandle = any;
-type NoTimeout = any;
+type NoTimeout = number;
 
 const hostConfig: HostConfig<
   Type,
@@ -48,6 +49,13 @@ const hostConfig: HostConfig<
     console.log("in createInstance");
     // eslint-disable-next-line no-console
     console.log({ type, props, rootContainer, hostContext, internalHandle });
+
+    const element = document.createElement(type) as Element;
+
+    if (props.className) element.className = props.className;
+    if (props.id) element.id = props.id;
+
+    return element;
   },
 
   createTextInstance(
@@ -60,6 +68,10 @@ const hostConfig: HostConfig<
     console.log("in createTextInstance");
     // eslint-disable-next-line no-console
     console.log({ text, rootContainer, hostContext, internalHandle });
+
+    const textElement = document.createTextNode(text);
+
+    return textElement;
   },
 
   appendInitialChild(
@@ -70,6 +82,8 @@ const hostConfig: HostConfig<
     console.log("in appendInitialChild");
     // eslint-disable-next-line no-console
     console.log({ parentInstance, child });
+
+    parentInstance.appendChild(child);
   },
 
   finalizeInitialChildren(
@@ -194,6 +208,8 @@ const hostConfig: HostConfig<
     console.log("in appendChild");
     // eslint-disable-next-line no-console
     console.log({ parentInstance, child });
+
+    parentInstance.appendChild(child);
   },
 
   appendChildToContainer(
@@ -204,6 +220,8 @@ const hostConfig: HostConfig<
     console.log("in appendChildToContainer");
     // eslint-disable-next-line no-console
     console.log({ container, child });
+
+    container.appendChild(child);
   },
 
   insertBefore(
