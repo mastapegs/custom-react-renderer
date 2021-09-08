@@ -51,7 +51,9 @@ const hostConfig: HostConfig<
     console.log({ type, props, rootContainer, hostContext, internalHandle });
 
     const element = document.createElement(type) as Element;
+
     element.className = props.className;
+    element.id = props.className;
 
     return element;
   },
