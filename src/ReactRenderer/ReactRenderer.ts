@@ -52,8 +52,8 @@ const hostConfig: HostConfig<
 
     const element = document.createElement(type) as Element;
 
-    element.className = props.className;
-    element.id = props.id;
+    if (props.className) element.className = props.className;
+    if (props.id) element.id = props.id;
 
     return element;
   },
