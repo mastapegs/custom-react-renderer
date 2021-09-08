@@ -2,11 +2,12 @@ import Reconciler, { HostConfig } from "react-reconciler";
 
 type OpaqueHandle = any;
 
-type Type = any;
-type Props = any;
+type Type = string;
+type Props = { [key: string]: any };
 type Container = Document | Element;
 type Instance = Element;
 type TextInstance = Text;
+
 type SuspenseInstance = any;
 type HydratableInstance = any;
 type PublicInstance = any;
@@ -14,7 +15,7 @@ type HostContext = any;
 type UpdatePayload = any;
 type _ChildSet = any;
 type TimeoutHandle = any;
-type NoTimeout = any;
+type NoTimeout = number;
 
 const hostConfig: HostConfig<
   Type,
@@ -49,7 +50,7 @@ const hostConfig: HostConfig<
     // eslint-disable-next-line no-console
     console.log({ type, props, rootContainer, hostContext, internalHandle });
 
-    const element = document.createElement(type) as HTMLElement;
+    const element = document.createElement(type) as Element;
     element.className = props.className;
 
     return element;
