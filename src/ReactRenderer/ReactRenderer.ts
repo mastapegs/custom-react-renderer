@@ -4,9 +4,9 @@ type OpaqueHandle = any;
 
 type Type = any;
 type Props = any;
-type Container = any;
-type Instance = any;
-type TextInstance = any;
+type Container = Document | Element;
+type Instance = Element;
+type TextInstance = Text;
 type SuspenseInstance = any;
 type HydratableInstance = any;
 type PublicInstance = any;
@@ -48,6 +48,11 @@ const hostConfig: HostConfig<
     console.log("in createInstance");
     // eslint-disable-next-line no-console
     console.log({ type, props, rootContainer, hostContext, internalHandle });
+
+    const element = document.createElement(type) as HTMLElement;
+    element.className = props.className;
+
+    return element;
   },
 
   createTextInstance(
@@ -60,6 +65,10 @@ const hostConfig: HostConfig<
     console.log("in createTextInstance");
     // eslint-disable-next-line no-console
     console.log({ text, rootContainer, hostContext, internalHandle });
+
+    const textElement = document.createTextNode(text);
+
+    return textElement;
   },
 
   appendInitialChild(
@@ -70,6 +79,8 @@ const hostConfig: HostConfig<
     console.log("in appendInitialChild");
     // eslint-disable-next-line no-console
     console.log({ parentInstance, child });
+
+    parentInstance.appendChild(child);
   },
 
   finalizeInitialChildren(
@@ -194,6 +205,8 @@ const hostConfig: HostConfig<
     console.log("in appendChild");
     // eslint-disable-next-line no-console
     console.log({ parentInstance, child });
+
+    parentInstance.appendChild(child);
   },
 
   appendChildToContainer(
@@ -204,6 +217,8 @@ const hostConfig: HostConfig<
     console.log("in appendChildToContainer");
     // eslint-disable-next-line no-console
     console.log({ container, child });
+
+    container.appendChild(child);
   },
 
   insertBefore(
